@@ -1,5 +1,5 @@
 #!/bin/bash -eux
-#x:実行コマンドを画面に出力 e:エラーがあったら停止 u:未定義の変数があったら止まる 
+#x:実行コマンドを画面に出力 e:エラーがあったら停止 u:未定義の変数があったら止まる
 #一番上のコマンドの上にコメントを置かないこと rmしたときにルートが削除されてしまう
 
 #confファイルにかいた変数を読み込む
@@ -9,6 +9,11 @@ source "$(dirname $0)/bin/conf"
 # $USERは現在のユーザを管理している環境変数
 # sudoで以外でこのプログラムを実行するとエラー ※sudoで実行すると$USERはrootになる
 [ "$USER" = "root" ] # USER MUST BE ROOT
+
+mkdir -p "$logdir"
+chown www-data:www-data "$logdir"
+
+
 
 ### INSTALL THIS SYSTEM ###
 #bin以下を/var/www/bashcms2にコピーする rsyncはディレクトリ間を同期する
@@ -28,7 +33,7 @@ mv "fetch" "fetch_$rnd.cgi"
 
 ### PULL ARTICLE REPO ###
 #$contentsdir=/var/www/bashcms2_contentsにもし記事リポジトリがすでにあれば、一旦削除する
-#${contentsdir:?}でこの変数が空だとエラーが発生する 
+#${contentsdir:?}でこの変数が空だとエラーが発生する
 rm -rf "${contentsdir:?}"
 
 #$wwwdir=/var/www

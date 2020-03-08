@@ -1,5 +1,4 @@
 #!/bin/bash -euvx
-
 source "$(dirname $0)/conf"
 exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
 #パイプライン中のエラーがでたら強制終了するバッシュのオプション -eオプションだとパイプはとまらない
@@ -14,14 +13,13 @@ dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
 md="$contentsdir/$dir/main.md"
 [ -f "$md" ]
 
-
 ### MAKE METADATA ###
 cat << FIN > $tmp-meta.yaml
 ---
 created_time:  '$(date -f - < "$datadir/$dir/created_time")'
 modified_time: '$(date -f - < "$datadir/$dir/modified_time")'
-title: '$(cat "$datadir/$dir/title)'
-nav:   '$(cat "$datadir/$dir/nav)'
+title: '$(cat "$datadir/$dir/title")'
+nav:   '$(cat "$datadir/$dir/nav")'
 ---
 FIN
 

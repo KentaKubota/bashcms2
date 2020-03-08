@@ -12,8 +12,8 @@ source "$(dirname $0)/bin/conf"
 
 
 ### CREATE DIRECTORIES ###
-mkdir -p "$logdir" "$datadir"
-chown www-data:www-data "$logdir" "$datadir"
+mkdir -p "$logdir" "$datadir"  "$datadir/counters"
+chown www-data:www-data "$logdir" "$datadir" "$datadir/counters"
 
 
 ### INSTALL THIS SYSTEM ###

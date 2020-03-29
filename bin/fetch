@@ -88,10 +88,10 @@ while read ymd hms d ; do
         tr '\n' ' '                                     > "$datadir/$d/nav"
 done
 
-rm -f $tmp-* #中間ファイルの削除
 
 
 ### MAKE KEYWORD LIST ###
+#cd /var/www/bashcms2_contents
 cd "$contentsdir"
 cat $tmp-list                    |
 awk '{print $3 "/main.md"}'      |
@@ -105,6 +105,8 @@ mv $tmp-keyword_list "$datadir/keyword_list"
 
 
 
+
+rm -f $tmp-* #中間ファイルの削除
 
 
 

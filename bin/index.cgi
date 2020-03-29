@@ -7,7 +7,7 @@ set -o pipefail
 #スクリプト終了時に実行される
 trap 'rm -f $tmp-*' EXIT
 
-### VARITABLES ###
+### VARIABLES ###
 tmp=/tmp/$$
 dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
 [ -z "$dir" ] && dir="pages/top"

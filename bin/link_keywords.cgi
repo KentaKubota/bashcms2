@@ -1,4 +1,4 @@
-#!/bin/bash -xv
+#!/bin/bash
 sed 's/%2c/\n/g' <<< "${QUERY_STRING}" > /tmp/hoge
 
 #source "$(dirname $0)/conf"
